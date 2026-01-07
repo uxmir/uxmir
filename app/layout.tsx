@@ -24,9 +24,10 @@ export default function RootLayout({
       <body
         className={` ${splineSans.className} antialiased`}
       >
-        <PageTransition>
+        {/* <PageTransition> */}
+        <Nav/>
         {children}
-        </PageTransition>
+        {/* </PageTransition> */}
       </body>
     </html>
   );
