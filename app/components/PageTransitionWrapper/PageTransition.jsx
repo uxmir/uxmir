@@ -1,6 +1,6 @@
 "use client";
 import React, { useLayoutEffect } from "react";
-import { gsap } from "gsap";
+import gsap from '../../../lib/gsap-config'
 import SplitType from "split-type";
 import { usePathname } from "next/navigation";
 function PageTransition({ children }) {
