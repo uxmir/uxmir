@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Hero from '../app/components/HeroSection/Hero'
-import Skill from '../app/components/MySkilllSection/Skill'
+import Skill from './components/MyServiceSection/Service'
 const page = () => {
   return (
 <>

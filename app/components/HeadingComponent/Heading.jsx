@@ -2,7 +2,7 @@
 import React, { useLayoutEffect, useRef } from "react";
 import gsap, { ScrollTrigger } from "../../../lib/gsap-config.js";
 import SplitType from "split-type";
-const Heading = ({ headingValue }) => {
+const Heading = ({ headingValue,color="text-black" }) => {
   const headingSection = useRef(null);
   const headingContainer = useRef(null);
   useLayoutEffect(() => {
@@ -31,7 +31,7 @@ const Heading = ({ headingValue }) => {
   return (
     <div
       ref={headingContainer}
-      className="text-center overflow-hidden text-3xl md:text-4xl  xl:text-6xl font-semibold uppercase"
+      className={`text-center overflow-hidden text-3xl md:text-4xl  xl:text-6xl font-semibold uppercase ${color}`}
     >
       <span ref={headingSection}>{headingValue}</span>
     </div>
