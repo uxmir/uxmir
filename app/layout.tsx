@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Spline_Sans } from "next/font/google";
 import "./globals.css";
 import PageTransition from "./components/PageTransitionWrapper/PageTransition";
+import SmoothScroll from '../app/components/SmoothScroll/SmoothScroll'
 import Nav from '../app/components/Nav'
 const splineSans = Spline_Sans({
   variable: "--font-spline-sans",
@@ -25,8 +26,10 @@ export default function RootLayout({
         className={` ${splineSans.className} antialiased`}
       >
         <PageTransition>
+          <SmoothScroll>
         <Nav/>
         {children}
+        </SmoothScroll>
         </PageTransition>
       </body>
     </html>
