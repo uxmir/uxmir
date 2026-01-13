@@ -22,13 +22,15 @@ const Contact = () => {
         scrollTrigger: {
           trigger: contactHeadingContainer.current,
           scroller: "body",
-          start: "top 80%",
-          end: "bottom 20%",
+          start: "top center",
+          end: "+=1500",
+          pin:true,
+          scrub:1
         },
       });
       tl.from(text1.chars, {
-        y: 120,
-        duration: 1,
+        y: -120,
+        duration: 1.5,
         stagger: {
           amount: 0.8,
           from: "center",
@@ -36,7 +38,7 @@ const Contact = () => {
       })
         .from(text2.chars, {
           y: -120,
-          duration: 1,
+          duration: 1.5,
           stagger: {
             amount: 0.8,
             from: "start",
@@ -44,7 +46,7 @@ const Contact = () => {
         })
         .from(text3.chars, {
           y: 120,
-          duration: 1,
+          duration: 1.5,
           stagger: {
             amount: 0.8,
             from: "center",
