@@ -26,14 +26,14 @@ export default function RootLayout({
       <body
         className={` ${splineSans.className} antialiased`}
       >
-        {/* <PageTransition> */}
+        <PageTransition>
           <SmoothScroll>
             <EmailProvider>
         <Nav/>
         {children}
         </EmailProvider>
         </SmoothScroll>
-        {/* </PageTransition> */}
+        </PageTransition>
       </body>
     </html>
   );

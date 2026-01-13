@@ -9,13 +9,10 @@ const page = () => {
   return (
 <>
     <div className=''>
-      {/* <Hero/>
+      <Hero/>
       <About/>
       <MyWork/>
-      <Skill/> */}
-      <div className='w-full h-[100vh] '>
-
-      </div>
+      <Skill/>
       <Contact/>
     </div>
 </>

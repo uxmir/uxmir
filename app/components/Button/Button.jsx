@@ -4,7 +4,7 @@ import React from 'react'
 const Button = ({btnText}) => {
   return (
     <div>
-          <div className="relative hidden lg:block cursor-pointer group overflow-hidden border rounded-full hover:border-transparent">
+          <div className="relative  cursor-pointer group overflow-hidden border rounded-full hover:border-transparent">
           <div className="px-6 py-3 text-lg font-medium uppercase rounded-full">
             <span className="group-hover:text-white">{btnText}</span>
           </div>

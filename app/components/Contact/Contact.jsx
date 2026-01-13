@@ -6,7 +6,9 @@ import gsap, { ScrollTrigger } from "../../../lib/gsap-config";
 import SplitType from "split-type";
 import Button from "../Button/Button";
 import { useEmail } from "@/app/Provider/EmailProvider";
+import { IconCheck } from "@tabler/icons-react";
 const Contact = () => {
+  const { successToast } = useEmail();
   const contactHeadingContainer = useRef(null);
   const contactText1 = useRef(null);
   const contactText2 = useRef(null);
@@ -22,7 +24,6 @@ const Contact = () => {
           scroller: "body",
           start: "top 80%",
           end: "bottom 20%",
-          markers: true,
         },
       });
       tl.from(text1.chars, {
@@ -74,6 +75,10 @@ const Contact = () => {
           <ContactHeading textId={contactText3} textValue={"clean code"} />
         </div>
         <EmailForm />
+        <EmailToast
+          toastText={"Email has been Sent Successfully"}
+          isSuccess={successToast}
+        />
       </Container>
     </div>
   );
@@ -138,6 +143,22 @@ const EmailForm = () => {
             </button>
           </div>
         </form>
+      </div>
+    </>
+  );
+};
+const EmailToast = ({ toastText, isSuccess }) => {
+  return (
+    <>
+      <div
+        className={`w-[310px] flex gap-x-3 items-center transition-all duration-500 px-4 py-4 rounded-lg bg-white shadow-lg fixed top-4 right-4 ${
+          isSuccess === true ? "translate-x-0" : "translate-x-[120%]"
+        }`}
+      >
+        <div className="w-7 h-7 rounded-full bg-black flex justify-center items-center">
+          <IconCheck size={16} className="text-white" />
+        </div>
+        <span>{toastText}</span>
       </div>
     </>
   );

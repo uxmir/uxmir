@@ -69,7 +69,7 @@ const Nav = () => {
             </div>
           ))}
         </div>
-        <div>
+        <div className="hidden lg:block">
           <Button btnText={'Say me hi'}/>
         </div>
         <IconMenu3 onClick={showMenu} className="block lg:hidden" />
