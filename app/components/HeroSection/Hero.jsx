@@ -146,7 +146,7 @@ const Hero = () => {
         >
           Creative developer
         </h1>
-        <div className=" w-full lg:-w-[800px] 2xl:w-full mx-auto mt-2 hidden  sm:flex flex-col sm:flex-row justify-between sm:items-center overflow-hidden  uppercase">
+        <div className=" w-full lg:w-[800px] 2xl:w-full mx-auto mt-2 hidden  sm:flex flex-col sm:flex-row justify-between sm:items-center overflow-hidden  uppercase">
           {skillData.map((data) => (
             <span key={data.id} className="nav-item inline-block">
               {data.text}

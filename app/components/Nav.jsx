@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useRef } from "react";
+import Button from '../components/Button/Button'
 import gsap from "../../lib/gsap-config";
 import { IconMenu3 } from "@tabler/icons-react";
 const Nav = () => {
@@ -68,11 +69,8 @@ const Nav = () => {
             </div>
           ))}
         </div>
-        <div className="relative hidden lg:block cursor-pointer group overflow-hidden border rounded-full hover:border-transparent">
-          <div className="px-6 py-3 text-lg font-medium uppercase rounded-full">
-            <span className="group-hover:text-white">say me hi</span>
-          </div>
-          <div className="w-full h-full absolute z-[-1] inset-0 bg-black rounded-full transition-all duration-500 translate-y-full group-hover:translate-y-0"></div>
+        <div>
+          <Button btnText={'Say me hi'}/>
         </div>
         <IconMenu3 onClick={showMenu} className="block lg:hidden" />
         {/*responsie navbar */}

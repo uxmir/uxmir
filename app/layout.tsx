@@ -3,6 +3,7 @@ import { Spline_Sans } from "next/font/google";
 import "./globals.css";
 import PageTransition from "./components/PageTransitionWrapper/PageTransition";
 import SmoothScroll from '../app/components/SmoothScroll/SmoothScroll'
+import EmailProvider from '../app/Provider/EmailProvider'
 import Nav from '../app/components/Nav'
 const splineSans = Spline_Sans({
   variable: "--font-spline-sans",
@@ -25,12 +26,14 @@ export default function RootLayout({
       <body
         className={` ${splineSans.className} antialiased`}
       >
-        <PageTransition>
+        {/* <PageTransition> */}
           <SmoothScroll>
+            <EmailProvider>
         <Nav/>
         {children}
+        </EmailProvider>
         </SmoothScroll>
-        </PageTransition>
+        {/* </PageTransition> */}
       </body>
     </html>
   );
