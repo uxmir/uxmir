@@ -4,6 +4,7 @@ import "./globals.css";
 import PageTransition from "./components/PageTransitionWrapper/PageTransition";
 import SmoothScroll from "../app/components/SmoothScroll/SmoothScroll";
 import EmailProvider from "../app/Provider/EmailProvider";
+import ScrollSectionProvider from '../app/Provider/ScrollSectionProvider'
 import Footer from '../app/components/Footer/Footer'
 import Nav from "../app/components/Nav";
 const splineSans = Spline_Sans({
@@ -27,11 +28,13 @@ export default function RootLayout({
       <body className={` ${splineSans.className} antialiased`}>
         <PageTransition>
           <SmoothScroll>
+            <ScrollSectionProvider>
             <EmailProvider>
               <Nav />
               {children}
               <Footer/>
             </EmailProvider>
+            </ScrollSectionProvider>
           </SmoothScroll>
         </PageTransition>
       </body>

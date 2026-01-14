@@ -1,22 +1,24 @@
 "use client";
 import Link from "next/link";
 import React, { useRef } from "react";
-import Button from '../components/Button/Button'
+import Button from "../components/Button/Button";
 import gsap from "../../lib/gsap-config";
 import { IconMenu3 } from "@tabler/icons-react";
+import { useScroll } from "../Provider/ScrollSectionProvider";
 const Nav = () => {
+  const { scrollToSection } = useScroll();
   const navContainer = useRef(null);
   const navItem = [
-    { id: 1, item: "{ work }" },
-    { id: 2, item: "{ about }" },
-    { id: 3, item: "{ services }" },
-    { id: 4, item: "{ contact }" },
+    { id: 1, item: "{ about }", target: "about" },
+    { id: 2, item: "{ work }", target: "work" },
+    { id: 3, item: "{ services }", target: "service" },
+    { id: 4, item: "{ contact }", target: "contact" },
   ];
   const navItemResponsive = [
-    { id: 1, item: " work " },
-    { id: 2, item: "about " },
-    { id: 3, item: "services" },
-    { id: 4, item: "contact" },
+    { id: 1, item: " about", target: "about" },
+    { id: 2, item: "work", target: "work" },
+    { id: 3, item: "services", target: "service" },
+    { id: 4, item: "contact", target: "contact" },
   ];
   const close = "{ ClOSE }";
   //menobaranimationlogic
@@ -31,20 +33,27 @@ const Nav = () => {
         y: "0%",
         duration: 1,
       }
-    ).fromTo(".nav-text",{y:70}, {
-      y: 0,
-      duration: 1,
-      stagger: 0.5,
-    });
+    ).fromTo(
+      ".nav-text",
+      { y: 70 },
+      {
+        y: 0,
+        duration: 1,
+        stagger: 0.5,
+      }
+    );
   };
-  const closeMenu = () => {
-    const tl = gsap.timeline();
+  const closeMenu = (callback) => {
+    const tl = gsap.timeline({
+      onComplete: () => {
+        if (callback) callback();
+      },
+    });
     tl.to(".nav-text", {
       y: -70,
       duration: 1,
       stagger: 0.5,
-    })
-    .fromTo(
+    }).fromTo(
       navContainer.current,
       {
         y: "0%",
@@ -57,20 +66,24 @@ const Nav = () => {
   };
   return (
     <>
-      <div className="w-full flex justify-between items-center  sticky py-5 z-10 px-5  lg:px-[100px]">
+      <div className="w-full flex justify-between items-center  fixed top-2  z-[9999] px-5  lg:px-[100px]">
         <span className="text-3xl font-bold">UXMIR</span>
         <div className="lg:flex items-center gap-x-4 hidden">
           {navItem.map((item) => (
             <div
+              onClick={() => scrollToSection(item.target)}
               key={item.id}
-              className="flex items-center gap-x-0.5 text-lg uppercase"
+              className="flex cursor-pointer items-center gap-x-0.5 text-lg uppercase"
             >
               <span>{item.item}</span>
             </div>
           ))}
         </div>
-        <div className="hidden lg:block">
-          <Button btnText={'Say me hi'}/>
+        <div
+          onClick={() => scrollToSection("contact")}
+          className="hidden lg:block"
+        >
+          <Button btnText={"Say me hi"} />
         </div>
         <IconMenu3 onClick={showMenu} className="block lg:hidden" />
         {/*responsie navbar */}
@@ -80,12 +93,19 @@ const Nav = () => {
         >
           <div className="flex justify-between items-center pb-5">
             <span className="text-xl font-bold">UXMIR</span>
-            <span onClick={closeMenu} className="cursor-pointer">{close}</span>
+            <span onClick={closeMenu} className="cursor-pointer">
+              {close}
+            </span>
           </div>
           <div className="flex flex-col gap-y-2">
             {navItemResponsive.map((item) => (
               <div
                 key={item.id}
+                onClick={() => {
+                  closeMenu(() => {
+                    scrollToSection(item.target);
+                  });
+                }}
                 className="text-3xl font-medium  uppercase overflow-hidden"
               >
                 <span className="inline-block nav-text">{item.item}</span>

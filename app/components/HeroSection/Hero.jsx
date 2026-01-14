@@ -138,7 +138,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="w-full mt-10">
+    <div className="w-full mt-20">
       <Container>
         <h1
           ref={heading}
