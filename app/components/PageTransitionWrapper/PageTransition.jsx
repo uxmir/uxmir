@@ -75,7 +75,7 @@ function PageTransition({ children }) {
   }, [pathName]);
   return (
     <>
-      <div className="w-full h-full fixed top-0 -translate-y-full pointer-events-none left-0 right-0 z-[9999] bg-black transition-container">
+      <div className="w-full h-full fixed top-0 translate-y-0 pointer-events-none left-0 right-0 z-[99999999] bg-black transition-container">
         <div className="flex justify-center items-center mt-50">
           <div className="relative hidden sm:block sm:mr-40 lg:mr-70 xl:mr-80">
             <div className=" w-40 h-60 lg:w-70 lg:h-90 absolute inset-0 image-left ">
