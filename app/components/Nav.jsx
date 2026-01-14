@@ -64,9 +64,26 @@ const Nav = () => {
       }
     );
   };
+    const closeMenuManual = () => {
+    const tl = gsap.timeline();
+    tl.to(".nav-text", {
+      y: -70,
+      duration: 1,
+      stagger: 0.5,
+    }).fromTo(
+      navContainer.current,
+      {
+        y: "0%",
+      },
+      {
+        y: "-100%",
+        duration: 1,
+      }
+    );
+  };
   return (
     <>
-      <div className="w-full flex justify-between items-center  fixed top-2  z-[9999] px-5  lg:px-[100px]">
+      <div className="w-full bg-white/60 flex justify-between items-center  fixed top-2  z-[9999] px-5 py-2  lg:px-[100px]">
         <span className="text-3xl font-bold">UXMIR</span>
         <div className="lg:flex items-center gap-x-4 hidden">
           {navItem.map((item) => (
@@ -86,14 +103,15 @@ const Nav = () => {
           <Button btnText={"Say me hi"} />
         </div>
         <IconMenu3 onClick={showMenu} className="block lg:hidden" />
-        {/*responsie navbar */}
+      </div>
+              {/*responsie navbar */}
         <div
           ref={navContainer}
-          className="w-full h-full fixed top-0 left-0 z-50 pt-5 bg-gray-50 px-5 -translate-y-full"
+          className="w-full h-full fixed top-0  left-0 z-[9999] pt-5 bg-gray-50 px-5 -translate-y-full"
         >
           <div className="flex justify-between items-center pb-5">
             <span className="text-xl font-bold">UXMIR</span>
-            <span onClick={closeMenu} className="cursor-pointer">
+            <span onClick={closeMenuManual} className="cursor-pointer">
               {close}
             </span>
           </div>
@@ -113,15 +131,14 @@ const Nav = () => {
             ))}
           </div>
           <div className="flex justify-between w-full  items-center uppercase mt-30">
-            <a href="#">Linkedin</a>
-            <a href="#">github</a>
+            <a href="https://www.linkedin.com/in/uxmir/">Linkedin</a>
+            <a href="https://github.com/uxmir">github</a>
           </div>
           <div className="flex flex-col gap-y-1 justify-center items-center mt-20">
             <p>mirmuniruzzaan303@gmail.com</p>
             <p>+8801943254037</p>
           </div>
         </div>
-      </div>
     </>
   );
 };

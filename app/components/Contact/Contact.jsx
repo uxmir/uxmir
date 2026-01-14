@@ -153,7 +153,7 @@ const EmailToast = ({ toastText, isSuccess }) => {
   return (
     <>
       <div
-        className={`w-[310px] flex gap-x-3 items-center transition-all duration-500 px-4 py-4 rounded-lg bg-white shadow-lg fixed top-4 right-4 ${
+        className={`w-[310px] z-[99999] flex gap-x-3 items-center transition-all duration-500 px-4 py-4 rounded-lg bg-white shadow-lg fixed top-4 right-4 ${
           isSuccess === true ? "translate-x-0" : "translate-x-[120%]"
         }`}
       >
