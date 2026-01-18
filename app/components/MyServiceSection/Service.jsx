@@ -95,7 +95,7 @@ const Skill = () => {
           ref={cardContainer}
           className="w-full h-screen flex justify-center items-center"
         >
-          <div className="w-full max-[350px]:h-[83vh] h-[75vh]  relative">
+          <div className="w-full min-h-[80vh] py-12  relative">
             {serviceCard.map((card) => (
               <div
                 key={card.id}
