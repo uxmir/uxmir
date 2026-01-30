@@ -1,11 +1,22 @@
 "use client";
-import React, { useLayoutEffect } from "react";
-import gsap from '../../../lib/gsap-config'
+import React, { useState,useEffect, useLayoutEffect } from "react";
+import gsap from "../../../lib/gsap-config";
 import SplitType from "split-type";
 import { usePathname } from "next/navigation";
 function PageTransition({ children }) {
-  const pathName=usePathname()
+  const pathName = usePathname();
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setIsLoaded(true);
+    } else {
+      const handleLoad = () => setIsLoaded(true);
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
+    }
+  }, []);
   useLayoutEffect(() => {
+    if (!isLoaded) return;
     const transitionAnimation = gsap.matchMedia();
     const tl = gsap.timeline();
     const text = new SplitType(".text", { types: "chars" });
@@ -35,7 +46,7 @@ function PageTransition({ children }) {
           return 0;
         },
         duration: 0.8,
-        delay: 1,
+        delay: 3,
       })
         .fromTo(
           [".image-left", ".image-right"],
@@ -46,7 +57,7 @@ function PageTransition({ children }) {
             clipPath: "inset(0% 0% 100% 0%)",
             ease: "sine.inOut",
             duration: 2,
-          }
+          },
         )
         .fromTo(
           ".image-middle",
@@ -57,7 +68,7 @@ function PageTransition({ children }) {
             clipPath: "inset(100% 0% 0% 0%)",
             ease: "sine.inOut",
             duration: 2,
-          }
+          },
         );
     });
     tl.fromTo(
@@ -69,10 +80,10 @@ function PageTransition({ children }) {
         y: "-100%",
         ease: "sine.inOut",
         duration: 2,
-      }
+      },
     );
     return () => transitionAnimation.revert();
-  }, [pathName]);
+  }, [isLoaded, pathName]);
   return (
     <>
       <div className="w-full h-full fixed top-0 translate-y-0 pointer-events-none left-0 right-0 z-[99999999] bg-black transition-container">

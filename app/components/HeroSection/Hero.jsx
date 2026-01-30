@@ -27,7 +27,7 @@ const Hero = () => {
         y: -160,
         opacity: 1,
         duration: 1,
-        delay: 7,
+        delay:7,
         ease: "",
         stagger: {
           amount: 0.8,
@@ -83,7 +83,7 @@ const Hero = () => {
         y: -160,
         opacity: 1,
         duration: 1,
-        delay: 7,
+        delay: 10,
         ease: "",
         stagger: {
           amount: 0.8,

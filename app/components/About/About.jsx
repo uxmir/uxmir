@@ -15,7 +15,7 @@ const About = () => {
           trigger: mainContainer.current,
           scroller: "body",
           start: "top top", 
-          end: "+=1500", 
+          end: "+=1200", 
           pin: true,
           scrub: 1,
         },
